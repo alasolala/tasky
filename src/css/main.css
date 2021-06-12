@@ -1,0 +1,136 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,body {
+  height: 100%;
+  width: 100%;
+}
+
+body{
+  display: flex;
+  -webkit-app-region: drag;
+}
+
+.enable-click {
+  -webkit-app-region: no-drag;
+}
+
+.nav{
+  padding: 50px 0;
+  width: 200px;
+  background-color: #f8f8f8;
+  color: #333333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.date{
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #31c27c;
+}
+.nav-text{
+ flex: 1;
+ font-size: 16px;
+}
+
+.nav-text>.item{
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.nav-text>.item.nav-active{
+  background-color: #31c27c;
+  color: #fff;
+}
+
+.add {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.add-icon{
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  line-height: 28px;
+  text-align: center;
+  font-size: 24px;
+  border-radius: 50%;
+  background-color: #31c27c;
+  color: #fff;
+  margin-right: 10px;
+}
+.content{
+  flex: 1;
+  height: 100%;
+  padding-top: 20px;
+}
+.close{
+  font-size: 26px;
+  float: right;
+  margin-right: 30px;
+  cursor: pointer;
+}
+.content-manage{
+  box-sizing: border-box;
+  display: none;
+  padding: 50px;
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+}
+.tasks{
+  margin-top: 40px;
+  height: 370px;
+  overflow: hidden;
+}
+.task-item{
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.task-text{
+  font-size: 16px;
+  color:#333;
+}
+.btns{
+  color: #03a9f4;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.flag-icon{
+  display: inline-block;
+  height:20px;
+  width: 20px;
+  background: url('../img/flag.png') no-repeat;
+  background-size: cover;
+}
+.form-item{
+  margin-top: 40px;
+}
+.form-item input{
+  margin-left: 20px;
+}
+.submit-task{
+  background-color: #31c27c;
+  color: #fff;
+  padding: 6px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.content-active{
+  display: block;
+}
+
+.keep-times {
+  color: #31c27c;
+  margin:  0 4px;
+}
+

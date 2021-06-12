@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="./css/main.css"></link>
+</head>
+<body>
+  <div class="nav">
+    <div class="date"></div>
+    <div class="nav-text">
+      <p class="item tab-manage nav-active enable-click">待办事项</p>
+      <p class="item tab-manage enable-click">已完成</p>
+    </div>
+    <div class="add tab-manage enable-click">
+      <span class="add-icon">+</span>
+      <span class="add-text">新建</span>
+    </div>
+  </div>
+  <div class="content">
+    <div>
+      <span class="close enable-click">×</span>
+    </div>
+    <div class="content-manage content-active">
+      <h2>今日待完成任务</h2>
+      <ul class="tasks task-todo"></ul>
+    </div>
+    <div class="content-manage">
+      <h2>今日已完成任务</h2>
+      <ul class="tasks task-finished">
+        <li class="task-item">
+          <span class="task-text">写作业</span>
+          <span class="flag-icon"></span>
+        </li>
+        <li class="task-item">
+          <span class="task-text">写作业</span>
+          <span class="flag-icon"></span>
+        </li>
+      </ul>
+      <p>你已经对自己信守承诺<span class="keep-times">0</span>次，继续加油哦！</p>
+    </div>
+    <div class="content-manage">
+      <h2>新建任务</h2>
+      <div class="form-item">
+        <label for="taskName">设置任务</label>
+        <input type="text" id="taskName" class="enable-click"/>
+      </div>
+      <div class="form-item">
+        <label for="taskTime">设置时间</label>
+        <input type="time" id="taskTime" class="enable-click">
+      </div>
+      <div class="form-item">
+        <span class="submit-task enable-click">
+          确定
+        </span>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="./js/main.js"></script>
+</html>

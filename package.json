@@ -1,0 +1,26 @@
+{
+  "name": "tasky",
+  "version": "1.0.0",
+  "description": "This is a task management app",
+  "main": "index.js",
+  "scripts": {
+    "electron": "nodemon --watch index.js --exec electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alasolala/tasky.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alasolala/tasky/issues"
+  },
+  "homepage": "https://github.com/alasolala/tasky#readme",
+  "dependencies": {
+    "electron": "^13.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
