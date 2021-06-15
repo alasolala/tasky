@@ -4,7 +4,8 @@
   "description": "This is a task management app",
   "main": "index.js",
   "scripts": {
-    "electron": "nodemon --watch index.js --exec electron ."
+    "electron": "nodemon --watch index.js --exec electron .",
+    "build-icon": "electron-icon-builder --input=./public/task.png --output=build --flatten"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,8 @@
     "electron": "^13.1.2"
   },
   "devDependencies": {
+    "electron-icon-builder": "^2.0.1",
+    "electron-packager": "^15.2.0",
     "nodemon": "^2.0.7"
   }
 }

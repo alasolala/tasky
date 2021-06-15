@@ -1,6 +1,7 @@
 (function(){
   const electron = require('electron')
   const { ipcRenderer } = electron
+  console.log(process)
 
   const tabManage = document.querySelectorAll('.tab-manage')
   const contentManage = document.querySelectorAll('.content-manage')
@@ -10,9 +11,6 @@
   const closeDom = document.querySelector('.close')
   const date = new Date(), nowTime = date.getTime()
   
-  //填入日期
-  document.querySelector('.date').innerText = 
-    `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`
     /** task data structure
    * name,
    * time
@@ -32,7 +30,7 @@
   if(!loginTime){
     loginTime = nowTime
   }else{
-    const loginD = new Date(loginTime)
+    const loginD = new Date(loginTime).getTime()
     if(date.getDate() !== loginD.getDate() || nowTime - loginTime >= 24 * 3600 * 1000){
       tasksFinished  = []
       tasksTodo = []
@@ -44,6 +42,8 @@
 
 
   //初始化
+  //填入日期
+  document.querySelector('.date').innerText = `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`
   genTodo()
   genFinished()
 

@@ -18,12 +18,12 @@ app.on('ready', () => {
     webPreferences:{
       backgroundThrottling: false,
       nodeIntegration:true,
-      contextIsolation: false,
-      preload: path.join(__dirname, './preload.js')
+      contextIsolation: false
+      // preload: path.join(__dirname, './preload.js')
     }
   })
   mainWindow.loadURL(`file://${__dirname}/src/main.html`)
-  
+  mainWindow.removeMenu()
   tray = new Tray(iconPath)
   tray.setToolTip('Tasky')
   tray.on('click', () => {
@@ -71,12 +71,14 @@ function createRemindWindow (task) {
     resizable: false,
     frame: false,
     icon: iconPath,
+    show: false,
     webPreferences:{
       nodeIntegration:true,
       contextIsolation: false,
-      preload: path.join(__dirname, './preload.js')
+      // preload: path.join(__dirname, './preload.js')
     }
   })
+  remindWindow.removeMenu()
   const size = screen.getPrimaryDisplay().workAreaSize
   const { y } = tray.getBounds()
   const { height, width } = remindWindow.getBounds()
@@ -87,7 +89,9 @@ function createRemindWindow (task) {
     height,
     width 
   })
+  remindWindow.setAlwaysOnTop(true)
   remindWindow.loadURL(`file://${__dirname}/src/remind.html`)
+  remindWindow.show()
   remindWindow.webContents.send('setTask', task)
   remindWindow.on('closed', () => { remindWindow = null })
   setTimeout( () => {
