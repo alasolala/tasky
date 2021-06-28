@@ -1,29 +1,82 @@
 {
   "name": "tasky",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is a task management app",
   "main": "index.js",
   "scripts": {
     "electron": "nodemon --watch index.js --exec electron .",
-    "build-icon": "electron-icon-builder --input=./public/task.png --output=build --flatten"
+    "build-icon": "electron-icon-builder --input=./public/icon.png --output=build --flatten",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "pack:mac": "electron-builder --mac",
+    "pack:win": "electron-builder --win --ia32"
+  },
+  "build": {
+    "appId": "this.is.tasky",
+    "productName": "Tasky",
+    "copyright": "Copyright © 2021 Alaso",
+    "publish": ["github"],
+    "directories": {
+      "buildResources": "build"
+    },
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "dmg": {
+      "background": "build/background.jfif",
+      "icon": "build/icons/icon.icns",
+      "iconSize": 100,
+      "contents": [
+        {
+          "x": 380,
+          "y": 280,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 110,
+          "y": 280,
+          "type": "file"
+        }
+      ],
+      "window": {
+        "width": 540,
+        "height": 380
+      }
+    },
+    "win": {
+      "target": [
+        "msi",
+        "nsis"
+      ],
+      "icon": "build/icons/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "language": "2052",
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alasolala/tasky.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alaso",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/alasolala/tasky/issues"
   },
   "homepage": "https://github.com/alasolala/tasky#readme",
   "dependencies": {
-    "electron": "^13.1.2"
+    "react": "^17.0.2",
+    "vue": "^2.6.14"
   },
   "devDependencies": {
+    "electron": "^13.1.2",
+    "electron-builder": "^22.11.7",
     "electron-icon-builder": "^2.0.1",
-    "electron-packager": "^15.2.0",
     "nodemon": "^2.0.7"
   }
 }
