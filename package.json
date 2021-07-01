@@ -1,21 +1,26 @@
 {
   "name": "tasky",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "This is a task management app",
   "main": "index.js",
   "scripts": {
-    "electron": "nodemon --watch index.js --exec electron .",
+    "dev": "electron .",
+    "start": "nodemon --watch index.js --exec electron .",
     "build-icon": "electron-icon-builder --input=./public/icon.png --output=build --flatten",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
-    "pack:mac": "electron-builder --mac",
-    "pack:win": "electron-builder --win --ia32"
+    "release": "cross-env GH_TOKEN=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 electron-builder"
   },
   "build": {
     "appId": "this.is.tasky",
     "productName": "Tasky",
     "copyright": "Copyright © 2021 Alaso",
-    "publish": ["github"],
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://127.0.0.1:9005/" 
+      }
+    ],
     "directories": {
       "buildResources": "build"
     },
@@ -29,13 +34,13 @@
       "contents": [
         {
           "x": 380,
-          "y": 280,
+          "y": 180,
           "type": "link",
           "path": "/Applications"
         },
         {
-          "x": 110,
-          "y": 280,
+          "x": 130,
+          "y": 180,
           "type": "file"
         }
       ],
@@ -71,10 +76,12 @@
   "homepage": "https://github.com/alasolala/tasky#readme",
   "dependencies": {
     "react": "^17.0.2",
-    "vue": "^2.6.14"
+    "vue": "^2.6.14",
+    "electron-updater": "^4.3.9"
   },
   "devDependencies": {
-    "electron": "^13.1.2",
+    "cross-env": "^7.0.3",
+    "electron": "^13.1.4",
     "electron-builder": "^22.11.7",
     "electron-icon-builder": "^2.0.1",
     "nodemon": "^2.0.7"

@@ -1,7 +1,8 @@
 const electron = require('electron')
 const path = require('path')
 
-const { app, BrowserWindow, ipcMain, Tray, Menu, screen } = electron
+const { app, BrowserWindow, ipcMain, Tray, Menu, screen, dialog } = electron
+const { autoUpdater } = require('electron-updater')
 const iconPath = path.join(__dirname, './src/img/icon.png')
 
 let mainWindow
@@ -9,6 +10,10 @@ let tray
 let remindWindow
 
 app.on('ready', () => {
+  //检查更新
+  checkUpdate()
+
+
   mainWindow = new BrowserWindow({
     frame: false,
     resizable: false,
@@ -97,4 +102,32 @@ function createRemindWindow (task) {
   setTimeout( () => {
     remindWindow && remindWindow.close()
   }, 50 * 1000)
+}
+
+function checkUpdate(){
+  if(process.platform == 'darwin'){
+    autoUpdater.setFeedURL('http://127.0.0.1:9005/darwin')
+  }else{
+    autoUpdater.setFeedURL('http://127.0.0.1:9005/win32')
+  }
+  autoUpdater.checkForUpdates()
+  autoUpdater.on('error', (err) => {
+    console.log(err)
+  })
+  autoUpdater.on('update-available', () => {
+    console.log('found new version')
+  })
+  autoUpdater.on('update-downloaded', () => {
+    dialog.showMessageBox({
+      type: 'info',
+      title: '应用更新',
+      message: '发现新版本，是否更新？',
+      buttons: ['是', '否']
+    }).then((buttonIndex) => {
+      if(buttonIndex.response == 0) {
+        autoUpdater.quitAndInstall()
+        app.quit()
+      }
+    })
+  })
 }
